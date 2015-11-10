@@ -4,7 +4,7 @@
  * @data 2015-11-10
  */
 require.config({
-  baseUrl: '../dist/js/lib',
+  baseUrl: './dist/js/lib',
   paths: {
     'main': 'main'
   }

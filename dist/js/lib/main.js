@@ -6,9 +6,9 @@
 
 //系统公共JS文件对象
 var common_js_files = [
-  '../dist/js/lib/html5shiv.min.js',
-  '../dist/js/lib/respond.min.js',
-  '../dist/js/lib/jquery.min.js'
+  'dist/js/lib/html5shiv.min.js',
+  'dist/js/lib/respond.min.js',
+  'dist/js/lib/jquery.min.js'
 ];
 define(common_js_files,function(){
   return {//公共函数
