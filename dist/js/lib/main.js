@@ -1,18 +1,70 @@
 /**
- * 系统公共JS文件、公共函数统一引用入口
+ * 系统公共函数
  * @author LiZhiXian
  * @data 2015-11-10
  */
 
-//系统公共JS文件对象
-var common_js_files = [
-  '/BootStrapApp/dist/js/lib/html5shiv.min.js',
-  '/BootStrapApp/dist/js/lib/respond.min.js',
-  '/BootStrapApp/dist/js/lib/jquery.min.js',
-  '/BootStrapApp/dist/js/lib/bootstrap.min.js'
-];
-define(common_js_files,function(){
+define('main',['jquery'],function(){
   return {//公共函数
+    alert:function(){
+      //alert 提示
+
+      var title = arguments[0] ? arguments[0] : "提示";
+      var show_msg = arguments[1] ? arguments[1] : "";  //提示信息
+      var callback_fun = arguments[2] ? arguments[2] : "";  //回调方法
+      var width = arguments[3] ? arguments[3] : "250";
+      var height = arguments[4] ? arguments[4] : "150";
+      var oDiv= null;
+      oDiv=document.createElement("div");
+      oDiv.innerHTML='<div class="modal fade" id="open_autoInv_alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="border-radius:5px;">'
+          +'<div class="modal-dialog" style="margin-top: 12%;">'
+          +'	<div style="width:'+width+'px;height:'+height+'px;background: #fff;border-radius:5px;margin: 0 auto;">'
+          +'	 	<div align="left" style="height:30px;padding: 5px;border-radius:5px;font-size: 18px;font-weight:bold;">'+ title
+          +'	 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+          +'			<span aria-hidden="true">×</span></button>'
+          +'	 	</div>'
+          +'	 	<div align="left" style="font-size: 16px;border-top: 1px solid #ccc;border-bottom: 0px dotted #ccc;height:65px;">'
+          +'			<div style="color: #666;margin-left: 30px;margin-top:5px;">'+show_msg
+          +'			</div>'
+          +'		</div>'
+          +'		<div class="modal-footer">'
+          +'			<button type="button" class="btn btn-default" onclick="$(\'#open_autoInv_alert\').modal(\'toggle\');">确认</button>'
+          +'		</div>'
+          +'	</div>'
+          +'</div>'
+          +'</div>';
+      document.body.appendChild(oDiv); //装载弹出层
+      $("#open_autoInv_alert").modal({
+        backdrop:'static',
+        keyboard:false
+      });
+      //关闭事件
+      $('#open_autoInv_alert').on('hidden.bs.modal', function (e) {
+        var win_alert_div=document.getElementById("open_autoInv_alert");
+        if(win_alert_div != null){
+          win_alert_div.parentNode.removeChild(win_alert_div);
+        }
+        if(callback_fun != null && callback_fun != ""){
+          window[callback_fun]();
+        }
+      });
+    },
+    serializeJsonObj:function(formId){//根据表单id获取表单数据 ,返回类型为json对象
+      var serializeObj = {};
+      var array = $('#'+formId).serializeArray();
+      $(array).each(function(){
+        if(serializeObj[this.name]){
+          if($.isArray(serializeObj[this.name])){
+            serializeObj[this.name].push(this.value);
+          }else{
+            serializeObj[this.name]=[serializeObj[this.name],this.value];
+          }
+        }else{
+          serializeObj[this.name]=this.value;
+        }
+      });
+      return serializeObj;
+    },
     getBrowserMsg:function(){
       /**
        * 获取浏览器类型
