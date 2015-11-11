@@ -11,9 +11,65 @@
   <meta http-equiv="Cache-Control" content="no-transform"/>
   <title></title>
   <link rel="stylesheet" href="../dist/css/bootstrap.min.css" />
+  <style>
+    .m-hdtop{
+      text-align: right;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <p>hello word!</p>
+  <div class="container">
+    <div class="row m-hdtop">
+      <div class="col-md-12">
+        <a>你还未登入</a>　|
+        <a>登入</a>|
+        <a>注册</a>|
+        <a>帮助</a>
+      </div>
+    </div>
+
+    <div class="row logo">
+      <div class="col-md-3">
+        <img src="../images/logo.jpg" class="img-responsive">
+      </div>
+    </div>
+
+    <div class="row" id="j-navbar">
+      <div class="col-md-12">
+        <nav class="navbar navbar-inverse" role="navigation">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">W3Cschool</a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">iOS</a></li>
+              <li><a href="#">SVN</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Java <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">jmeter</a></li>
+                  <li><a href="#">EJB</a></li>
+                  <li><a href="#">Jasper Report</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">分离的链接</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+
+    </div>
+  </div>
+
   <script data-main="../dist/js/view/index" src="../dist/js/lib/require.min.js"></script>
 </body>
 
