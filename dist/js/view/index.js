@@ -18,7 +18,6 @@ require(['main','bs3'],function(Main){
   Main.setCookie('lzx','123456');
   console.log(Main.getCookie('lzx'));
   Main.delCookie('lzx');
-
 });
 
 
